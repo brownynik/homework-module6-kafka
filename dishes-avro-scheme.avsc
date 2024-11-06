@@ -1,0 +1,62 @@
+{
+	"type": "record",
+	"namespace": "restaurant.com",
+	"name": "DishOrder",
+	"doc": "Список блюд из ресторана.",
+	"fields": [	
+				{
+					"doc": "Идентификатор заказа",
+					"name": "OrderID",
+					"type": "long"
+				},	
+				{
+					"doc": "Полная стоимость заказа",
+					"name": "TotalCost",
+					"type": {
+								"type": "bytes",
+								"logicalType": "decimal",
+								"precision": 16,
+								"scale": 2,
+							}
+					
+				},	
+				{
+					"doc": "Timestamp создания заказа",
+					"name": "CreatedAt",
+					"type": {
+								"type": "long",
+								"logicalType": "timestamp-millis"
+							}
+				},	
+				{
+					"doc": "Список блюд",
+					"name": "Dishes",
+					"type": 
+					{
+						"type": "array",
+						"items": 
+						{ 
+									"doc": "Блюдо",
+									"type": "record",
+									"name": "Dish",
+									"fields":
+									[ 
+										{ 
+											"name": "DishName", 
+											"type": "string" 
+										},
+										{ 
+											"name": "DishCost", 
+											"type": {
+														"type": "bytes",
+														"logicalType": "decimal",
+														"precision": 16,
+														"scale": 2,
+													}
+										}
+									]
+						}
+					}
+				}
+	]
+}	
